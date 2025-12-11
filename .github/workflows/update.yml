@@ -22,15 +22,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
-      - name: Check username and Update releases
+      - name: Update releases
         env:
           GITHUB_TOKEN: ${{ secrets.SECRET_KEY }}
         run: |
-          OWNER_NAME="${{ github.repository_owner }}"
-          if [ "$OWNER_NAME" != "ynlknk-kvqm" ]; then
-            exit 1
-          fi
-          
           echo "Finds releases for silent.json..."
           
           if [ -n "${{ github.event.inputs.target_repo }}" ]; then
